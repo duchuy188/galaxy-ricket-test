@@ -144,7 +144,7 @@ const allFacilities = [
   "Family Seating",
 ]
 
-function TheaterCard({ theater }: { theater: any }) {
+function TheaterCard({ theater }) {
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
       <div className="relative h-48">
@@ -178,7 +178,7 @@ function TheaterCard({ theater }: { theater: any }) {
         <div>
           <h4 className="font-medium mb-2">Facilities</h4>
           <div className="flex flex-wrap gap-2">
-            {theater.facilities.slice(0, 4).map((facility: string) => (
+            {theater.facilities.slice(0, 4).map((facility) => (
               <Badge key={facility} variant="outline">
                 {facility}
               </Badge>
@@ -201,7 +201,7 @@ function TheaterCard({ theater }: { theater: any }) {
 export default function TheatersPage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedArea, setSelectedArea] = useState("All Areas")
-  const [selectedFacilities, setSelectedFacilities] = useState<string[]>([])
+  const [selectedFacilities, setSelectedFacilities] = useState([])
 
   // Filter theaters
   const filteredTheaters = theaters.filter((theater) => {
@@ -223,7 +223,7 @@ export default function TheatersPage() {
     return true
   })
 
-  const toggleFacility = (facility: string) => {
+  const toggleFacility = (facility) => {
     setSelectedFacilities((prev) =>
       prev.includes(facility) ? prev.filter((f) => f !== facility) : [...prev, facility],
     )
@@ -231,34 +231,6 @@ export default function TheatersPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center">
-              <div className="text-2xl font-bold text-red-600">Galaxy Cinema</div>
-            </Link>
-            <nav className="hidden md:flex space-x-8">
-              <Link href="/" className="text-gray-900 hover:text-red-600">
-                Home
-              </Link>
-              <Link href="/movies" className="text-gray-900 hover:text-red-600">
-                Movies
-              </Link>
-              <Link href="/theaters" className="text-red-600 font-medium">
-                Theaters
-              </Link>
-              <Link href="/bookings" className="text-gray-900 hover:text-red-600">
-                My Bookings
-              </Link>
-            </nav>
-            <Button variant="outline" className="border-red-600 text-red-600 hover:bg-red-600 hover:text-white">
-              Sign In
-            </Button>
-          </div>
-        </div>
-      </header>
-
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <h1 className="text-3xl font-bold mb-8">Our Theaters</h1>

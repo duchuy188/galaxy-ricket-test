@@ -20,7 +20,6 @@ import {
 } from "@/components/ui/dialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Film, Calendar, MapPin, Edit, Trash2, Plus, AlertTriangle, CheckCircle } from "lucide-react"
 
 export default function StaffDashboard() {
   const { user } = useAuth()
@@ -199,22 +198,10 @@ export default function StaffDashboard() {
 
         <Tabs defaultValue="movies" className="space-y-6">
           <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="movies" className="flex items-center space-x-2">
-              <Film className="h-4 w-4" />
-              <span>Movies</span>
-            </TabsTrigger>
-            <TabsTrigger value="screenings" className="flex items-center space-x-2">
-              <Calendar className="h-4 w-4" />
-              <span>Screenings</span>
-            </TabsTrigger>
-            <TabsTrigger value="seats" className="flex items-center space-x-2">
-              <MapPin className="h-4 w-4" />
-              <span>Seat Layout</span>
-            </TabsTrigger>
-            <TabsTrigger value="payments" className="flex items-center space-x-2">
-              <AlertTriangle className="h-4 w-4" />
-              <span>Payment Issues</span>
-            </TabsTrigger>
+            <TabsTrigger value="movies">Movies</TabsTrigger>
+            <TabsTrigger value="screenings">Screenings</TabsTrigger>
+            <TabsTrigger value="seats">Seat Layout</TabsTrigger>
+            <TabsTrigger value="payments">Payment Issues</TabsTrigger>
           </TabsList>
 
           {/* Movies Tab */}
@@ -227,10 +214,7 @@ export default function StaffDashboard() {
                 </div>
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button>
-                      <Plus className="h-4 w-4 mr-2" />
-                      Add Movie
-                    </Button>
+                    <Button>Add Movie</Button>
                   </DialogTrigger>
                   <DialogContent className="max-w-2xl">
                     <DialogHeader>
@@ -266,7 +250,7 @@ export default function StaffDashboard() {
                             <Dialog>
                               <DialogTrigger asChild>
                                 <Button variant="outline" size="sm" onClick={() => setEditingMovie(movie)}>
-                                  <Edit className="h-4 w-4" />
+                                  Edit
                                 </Button>
                               </DialogTrigger>
                               <DialogContent className="max-w-2xl">
@@ -278,7 +262,7 @@ export default function StaffDashboard() {
                               </DialogContent>
                             </Dialog>
                             <Button variant="destructive" size="sm" onClick={() => handleDeleteMovie(movie.id)}>
-                              <Trash2 className="h-4 w-4" />
+                              Delete
                             </Button>
                           </div>
                         </TableCell>
@@ -300,10 +284,7 @@ export default function StaffDashboard() {
                 </div>
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button>
-                      <Plus className="h-4 w-4 mr-2" />
-                      Add Screening
-                    </Button>
+                    <Button>Add Screening</Button>
                   </DialogTrigger>
                   <DialogContent>
                     <DialogHeader>
@@ -345,7 +326,7 @@ export default function StaffDashboard() {
                             <Dialog>
                               <DialogTrigger asChild>
                                 <Button variant="outline" size="sm" onClick={() => setEditingScreening(screening)}>
-                                  <Edit className="h-4 w-4" />
+                                  Edit
                                 </Button>
                               </DialogTrigger>
                               <DialogContent>
@@ -489,7 +470,6 @@ export default function StaffDashboard() {
                         <TableCell>
                           {error.status === "pending" && (
                             <Button size="sm" onClick={() => handleResolvePaymentError(error.id)}>
-                              <CheckCircle className="h-4 w-4 mr-2" />
                               Resolve
                             </Button>
                           )}
@@ -617,106 +597,4 @@ function MovieForm({ movie, onSubmit }) {
           </Select>
         </div>
       </div>
-      <Button type="submit" className="w-full">
-        {movie ? "Update Movie" : "Add Movie"}
-      </Button>
-    </form>
-  )
-}
-
-// Screening Form Component
-function ScreeningForm({ movies, screening, onSubmit }) {
-  const [formData, setFormData] = useState({
-    movieId: screening?.movieId || "",
-    theater: screening?.theater || "",
-    date: screening?.date || "",
-    time: screening?.time || "",
-    price: screening?.price || "",
-  })
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    onSubmit(formData)
-    if (!screening) {
-      setFormData({
-        movieId: "",
-        theater: "",
-        date: "",
-        time: "",
-        price: "",
-      })
-    }
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
-        <Label htmlFor="movieId">Movie</Label>
-        <Select
-          value={formData.movieId.toString()}
-          onValueChange={(value) => setFormData({ ...formData, movieId: Number.parseInt(value) })}
-        >
-          <SelectTrigger>
-            <SelectValue placeholder="Select movie" />
-          </SelectTrigger>
-          <SelectContent>
-            {movies.map((movie) => (
-              <SelectItem key={movie.id} value={movie.id.toString()}>
-                {movie.title}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
-      <div>
-        <Label htmlFor="theater">Theater</Label>
-        <Select value={formData.theater} onValueChange={(value) => setFormData({ ...formData, theater: value })}>
-          <SelectTrigger>
-            <SelectValue placeholder="Select theater" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="Theater 1">Theater 1</SelectItem>
-            <SelectItem value="Theater 2">Theater 2</SelectItem>
-            <SelectItem value="Theater 3">Theater 3</SelectItem>
-            <SelectItem value="Theater 4">Theater 4</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-      <div className="grid grid-cols-2 gap-4">
-        <div>
-          <Label htmlFor="date">Date</Label>
-          <Input
-            id="date"
-            type="date"
-            value={formData.date}
-            onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-            required
-          />
-        </div>
-        <div>
-          <Label htmlFor="time">Time</Label>
-          <Input
-            id="time"
-            type="time"
-            value={formData.time}
-            onChange={(e) => setFormData({ ...formData, time: e.target.value })}
-            required
-          />
-        </div>
-      </div>
-      <div>
-        <Label htmlFor="price">Price ($)</Label>
-        <Input
-          id="price"
-          type="number"
-          value={formData.price}
-          onChange={(e) => setFormData({ ...formData, price: Number.parseInt(e.target.value) })}
-          required
-        />
-      </div>
-      <Button type="submit" className="w-full">
-        {screening ? "Update Screening" : "Add Screening"}
-      </Button>
-    </form>
-  )
-}
+      <Button\
