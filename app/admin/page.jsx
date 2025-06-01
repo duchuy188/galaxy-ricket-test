@@ -18,7 +18,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Users, DollarSign, TrendingUp, Calendar, Edit, Lock, Unlock, BarChart3 } from "lucide-react"
 
 export default function AdminDashboard() {
   const { user, users, updateUser, toggleUserLock } = useAuth()
@@ -92,14 +91,8 @@ export default function AdminDashboard() {
 
         <Tabs defaultValue="users" className="space-y-6">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="users" className="flex items-center space-x-2">
-              <Users className="h-4 w-4" />
-              <span>User Management</span>
-            </TabsTrigger>
-            <TabsTrigger value="revenue" className="flex items-center space-x-2">
-              <BarChart3 className="h-4 w-4" />
-              <span>Revenue Reports</span>
-            </TabsTrigger>
+            <TabsTrigger value="users">User Management</TabsTrigger>
+            <TabsTrigger value="revenue">Revenue Reports</TabsTrigger>
           </TabsList>
 
           <TabsContent value="users" className="space-y-6">
@@ -150,7 +143,7 @@ export default function AdminDashboard() {
                             <Dialog>
                               <DialogTrigger asChild>
                                 <Button variant="outline" size="sm" onClick={() => handleEditUser(user)}>
-                                  <Edit className="h-4 w-4" />
+                                  Edit
                                 </Button>
                               </DialogTrigger>
                               <DialogContent>
@@ -206,7 +199,7 @@ export default function AdminDashboard() {
                               size="sm"
                               onClick={() => handleToggleLock(user.id)}
                             >
-                              {user.isLocked ? <Unlock className="h-4 w-4" /> : <Lock className="h-4 w-4" />}
+                              {user.isLocked ? "Unlock" : "Lock"}
                             </Button>
                           </div>
                         </TableCell>
@@ -224,7 +217,18 @@ export default function AdminDashboard() {
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
-                  <DollarSign className="h-4 w-4 text-muted-foreground" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-4 w-4 text-muted-foreground"
+                  >
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                  </svg>
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">${revenueData.totalRevenue.toLocaleString()}</div>
@@ -234,7 +238,19 @@ export default function AdminDashboard() {
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">Monthly Revenue</CardTitle>
-                  <TrendingUp className="h-4 w-4 text-muted-foreground" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-4 w-4 text-muted-foreground"
+                  >
+                    <path d="m23 6-9.5 9.5-5-5L1 18" />
+                    <path d="M17 6h6v6" />
+                  </svg>
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">${revenueData.monthlyRevenue.toLocaleString()}</div>
@@ -244,7 +260,21 @@ export default function AdminDashboard() {
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">Total Bookings</CardTitle>
-                  <Calendar className="h-4 w-4 text-muted-foreground" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-4 w-4 text-muted-foreground"
+                  >
+                    <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                    <line x1="16" x2="16" y1="2" y2="6" />
+                    <line x1="8" x2="8" y1="2" y2="6" />
+                    <line x1="3" x2="21" y1="10" y2="10" />
+                  </svg>
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">{revenueData.totalBookings.toLocaleString()}</div>
@@ -254,7 +284,21 @@ export default function AdminDashboard() {
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">Monthly Bookings</CardTitle>
-                  <Users className="h-4 w-4 text-muted-foreground" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-4 w-4 text-muted-foreground"
+                  >
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                  </svg>
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">{revenueData.monthlyBookings}</div>

@@ -177,7 +177,7 @@ function BannerSlider() {
   )
 }
 
-function MovieCard({ movie, isComingSoon = false }: { movie: any; isComingSoon?: boolean }) {
+function MovieCard({ movie, isComingSoon = false }) {
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
       <div className="relative">
@@ -226,34 +226,6 @@ function MovieCard({ movie, isComingSoon = false }: { movie: any; isComingSoon?:
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center">
-              <div className="text-2xl font-bold text-red-600">Galaxy Cinema</div>
-            </Link>
-            <nav className="hidden md:flex space-x-8">
-              <Link href="/" className="text-gray-900 hover:text-red-600">
-                Home
-              </Link>
-              <Link href="/movies" className="text-gray-900 hover:text-red-600">
-                Movies
-              </Link>
-              <Link href="/theaters" className="text-gray-900 hover:text-red-600">
-                Theaters
-              </Link>
-              <Link href="/bookings" className="text-gray-900 hover:text-red-600">
-                My Bookings
-              </Link>
-            </nav>
-            <Button variant="outline" className="border-red-600 text-red-600 hover:bg-red-600 hover:text-white">
-              Sign In
-            </Button>
-          </div>
-        </div>
-      </header>
-
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Banner Slider */}
