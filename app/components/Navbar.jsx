@@ -39,16 +39,16 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             <Link href="/" className="text-gray-900 hover:text-red-600">
-              Home
+              Trang chủ
             </Link>
             <Link href="/movies" className="text-gray-900 hover:text-red-600">
-              Movies
+              Phim
             </Link>
             <Link href="/theaters" className="text-gray-900 hover:text-red-600">
-              Theaters
+              Rạp chiếu
             </Link>
             <Link href="/bookings" className="text-gray-900 hover:text-red-600">
-              My Bookings
+              Vé của tôi
             </Link>
           </nav>
 
@@ -72,24 +72,20 @@ export default function Navbar() {
                       ) : (
                         <User className="mr-2 h-4 w-4" />
                       )}
-                      {user.role === "admin"
-                        ? "Admin Dashboard"
-                        : user.role === "staff"
-                          ? "Staff Dashboard"
-                          : "My Bookings"}
+                      {user.role === "admin" ? "Quản trị viên" : user.role === "staff" ? "Nhân viên" : "Vé của tôi"}
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={handleLogout} className="text-red-600">
                     <LogOut className="mr-2 h-4 w-4" />
-                    Logout
+                    Đăng xuất
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
               <Link href="/signin">
                 <Button variant="outline" className="border-red-600 text-red-600 hover:bg-red-600 hover:text-white">
-                  Sign In
+                  Đăng nhập
                 </Button>
               </Link>
             )}
@@ -120,28 +116,28 @@ export default function Navbar() {
                 className="block px-3 py-2 text-gray-900 hover:text-red-600"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Home
+                Trang chủ
               </Link>
               <Link
                 href="/movies"
                 className="block px-3 py-2 text-gray-900 hover:text-red-600"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Movies
+                Phim
               </Link>
               <Link
                 href="/theaters"
                 className="block px-3 py-2 text-gray-900 hover:text-red-600"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Theaters
+                Rạp chiếu
               </Link>
               <Link
                 href="/bookings"
                 className="block px-3 py-2 text-gray-900 hover:text-red-600"
                 onClick={() => setIsMenuOpen(false)}
               >
-                My Bookings
+                Vé của tôi
               </Link>
 
               {!user && (
@@ -150,7 +146,7 @@ export default function Navbar() {
                   className="block px-3 py-2 text-red-600 hover:text-red-700"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Sign In
+                  Đăng nhập
                 </Link>
               )}
 
@@ -161,17 +157,13 @@ export default function Navbar() {
                     className="block px-3 py-2 text-gray-900 hover:text-red-600"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    {user.role === "admin"
-                      ? "Admin Dashboard"
-                      : user.role === "staff"
-                        ? "Staff Dashboard"
-                        : "My Bookings"}
+                    {user.role === "admin" ? "Quản trị viên" : user.role === "staff" ? "Nhân viên" : "Vé của tôi"}
                   </Link>
                   <button
                     onClick={handleLogout}
                     className="block w-full text-left px-3 py-2 text-red-600 hover:text-red-700"
                   >
-                    Logout
+                    Đăng xuất
                   </button>
                 </>
               )}

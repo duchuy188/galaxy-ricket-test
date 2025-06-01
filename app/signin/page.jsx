@@ -63,31 +63,31 @@ export default function SignIn() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-red-600">Galaxy Cinema</h1>
-          <p className="text-gray-600">Sign in to your account</p>
+          <p className="text-gray-600">Đăng nhập vào tài khoản của bạn</p>
         </div>
 
         <Card>
           <CardHeader>
-            <CardTitle>Welcome Back</CardTitle>
-            <CardDescription>Enter your credentials to access your account</CardDescription>
+            <CardTitle>Chào mừng trở lại</CardTitle>
+            <CardDescription>Nhập thông tin đăng nhập để truy cập tài khoản</CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="username">Username</Label>
+                <Label htmlFor="username">Tên đăng nhập</Label>
                 <Input
                   id="username"
                   name="username"
                   type="text"
                   value={formData.username}
                   onChange={handleChange}
-                  placeholder="Enter your username"
+                  placeholder="Nhập tên đăng nhập"
                   required
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">Mật khẩu</Label>
                 <div className="relative">
                   <Input
                     id="password"
@@ -95,7 +95,7 @@ export default function SignIn() {
                     type={showPassword ? "text" : "password"}
                     value={formData.password}
                     onChange={handleChange}
-                    placeholder="Enter your password"
+                    placeholder="Nhập mật khẩu"
                     required
                   />
                   <button
@@ -103,7 +103,7 @@ export default function SignIn() {
                     onClick={() => setShowPassword(!showPassword)}
                     className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
                   >
-                    {showPassword ? "Hide" : "Show"}
+                    {showPassword ? "Ẩn" : "Hiện"}
                   </button>
                 </div>
               </div>
@@ -115,35 +115,35 @@ export default function SignIn() {
               )}
 
               <Button type="submit" className="w-full bg-red-600 hover:bg-red-700" disabled={loading}>
-                {loading ? "Signing In..." : "Sign In"}
+                {loading ? "Đang đăng nhập..." : "Đăng nhập"}
               </Button>
             </form>
 
             <div className="mt-6">
-              <div className="text-center text-gray-500 mb-4">Quick Login Options</div>
+              <div className="text-center text-gray-500 mb-4">Tùy chọn đăng nhập nhanh</div>
               <div className="grid grid-cols-2 gap-2">
                 <Button
                   variant="outline"
                   onClick={() => quickLogin("admin", "123")}
                   className="border-blue-600 text-blue-600 hover:bg-blue-50"
                 >
-                  Admin Login
+                  Quản trị viên
                 </Button>
                 <Button
                   variant="outline"
                   onClick={() => quickLogin("staff", "123")}
                   className="border-green-600 text-green-600 hover:bg-green-50"
                 >
-                  Staff Login
+                  Nhân viên
                 </Button>
               </div>
             </div>
 
             <div className="mt-6 text-center">
               <p className="text-gray-600">
-                Don't have an account?{" "}
+                Chưa có tài khoản?{" "}
                 <Link href="/signup" className="text-red-600 hover:text-red-800">
-                  Sign up here
+                  Đăng ký tại đây
                 </Link>
               </p>
             </div>

@@ -11,99 +11,99 @@ import { Card, CardContent } from "@/components/ui/card"
 const banners = [
   {
     id: 1,
-    title: "Avatar: The Way of Water",
+    title: "Avatar: Dòng Chảy Của Nước",
     image: "/placeholder.svg?height=400&width=800",
-    description: "Experience the magic of Pandora like never before",
+    description: "Trải nghiệm phép màu của Pandora như chưa từng có",
   },
   {
     id: 2,
     title: "Top Gun: Maverick",
     image: "/placeholder.svg?height=400&width=800",
-    description: "Feel the need for speed in IMAX",
+    description: "Cảm nhận tốc độ trong định dạng IMAX",
   },
   {
     id: 3,
-    title: "Black Panther: Wakanda Forever",
+    title: "Black Panther: Wakanda Bất Diệt",
     image: "/placeholder.svg?height=400&width=800",
-    description: "Honor the legacy in premium formats",
+    description: "Tôn vinh di sản trong các định dạng cao cấp",
   },
 ]
 
 const nowShowingMovies = [
   {
     id: 1,
-    title: "Avatar: The Way of Water",
+    title: "Avatar: Dòng Chảy Của Nước",
     image: "/placeholder.svg?height=300&width=200",
-    duration: "192 min",
-    genre: "Action, Adventure, Sci-Fi",
+    duration: "192 phút",
+    genre: "Hành động, Phiêu lưu, Khoa học viễn tưởng",
     rating: 4.5,
-    price: "$12.99",
+    price: "120.000đ",
   },
   {
     id: 2,
     title: "Top Gun: Maverick",
     image: "/placeholder.svg?height=300&width=200",
-    duration: "130 min",
-    genre: "Action, Drama",
+    duration: "130 phút",
+    genre: "Hành động, Chính kịch",
     rating: 4.8,
-    price: "$11.99",
+    price: "110.000đ",
   },
   {
     id: 3,
-    title: "Black Panther: Wakanda Forever",
+    title: "Black Panther: Wakanda Bất Diệt",
     image: "/placeholder.svg?height=300&width=200",
-    duration: "161 min",
-    genre: "Action, Adventure, Drama",
+    duration: "161 phút",
+    genre: "Hành động, Phiêu lưu, Chính kịch",
     rating: 4.3,
-    price: "$12.99",
+    price: "120.000đ",
   },
   {
     id: 4,
     title: "The Batman",
     image: "/placeholder.svg?height=300&width=200",
-    duration: "176 min",
-    genre: "Action, Crime, Drama",
+    duration: "176 phút",
+    genre: "Hành động, Tội phạm, Chính kịch",
     rating: 4.6,
-    price: "$11.99",
+    price: "110.000đ",
   },
 ]
 
 const comingSoonMovies = [
   {
     id: 5,
-    title: "Spider-Man: Across the Spider-Verse",
+    title: "Spider-Man: Vũ Trụ Nhện",
     image: "/placeholder.svg?height=300&width=200",
-    duration: "140 min",
-    genre: "Animation, Action, Adventure",
+    duration: "140 phút",
+    genre: "Hoạt hình, Hành động, Phiêu lưu",
     rating: 4.9,
-    releaseDate: "June 2, 2024",
+    releaseDate: "2 tháng 6, 2024",
   },
   {
     id: 6,
-    title: "Guardians of the Galaxy Vol. 3",
+    title: "Vệ Binh Dải Ngân Hà 3",
     image: "/placeholder.svg?height=300&width=200",
-    duration: "150 min",
-    genre: "Action, Adventure, Comedy",
+    duration: "150 phút",
+    genre: "Hành động, Phiêu lưu, Hài",
     rating: 4.7,
-    releaseDate: "May 5, 2024",
+    releaseDate: "5 tháng 5, 2024",
   },
   {
     id: 7,
     title: "Fast X",
     image: "/placeholder.svg?height=300&width=200",
-    duration: "141 min",
-    genre: "Action, Crime, Thriller",
+    duration: "141 phút",
+    genre: "Hành động, Tội phạm, Ly kỳ",
     rating: 4.2,
-    releaseDate: "May 19, 2024",
+    releaseDate: "19 tháng 5, 2024",
   },
   {
     id: 8,
     title: "Indiana Jones 5",
     image: "/placeholder.svg?height=300&width=200",
-    duration: "154 min",
-    genre: "Action, Adventure",
+    duration: "154 phút",
+    genre: "Hành động, Phiêu lưu",
     rating: 4.4,
-    releaseDate: "June 30, 2024",
+    releaseDate: "30 tháng 6, 2024",
   },
 ]
 
@@ -143,7 +143,7 @@ function BannerSlider() {
               <h2 className="text-4xl md:text-6xl font-bold mb-4">{banner.title}</h2>
               <p className="text-lg md:text-xl mb-6">{banner.description}</p>
               <Button size="lg" className="bg-red-600 hover:bg-red-700">
-                Book Now
+                Đặt vé ngay
               </Button>
             </div>
           </div>
@@ -189,7 +189,7 @@ function MovieCard({ movie, isComingSoon = false }) {
           className="w-full h-80 object-cover"
         />
         {isComingSoon && (
-          <div className="absolute top-2 right-2 bg-blue-600 text-white px-2 py-1 rounded text-sm">Coming Soon</div>
+          <div className="absolute top-2 right-2 bg-blue-600 text-white px-2 py-1 rounded text-sm">Sắp chiếu</div>
         )}
       </div>
       <CardContent className="p-4">
@@ -215,7 +215,7 @@ function MovieCard({ movie, isComingSoon = false }) {
         </div>
         <Link href={`/movie/${movie.id}`}>
           <Button className="w-full mt-3 bg-red-600 hover:bg-red-700">
-            {isComingSoon ? "View Details" : "Book Tickets"}
+            {isComingSoon ? "Xem chi tiết" : "Đặt vé"}
           </Button>
         </Link>
       </CardContent>
@@ -235,7 +235,7 @@ export default function HomePage() {
 
         {/* Now Showing */}
         <section className="mb-12">
-          <h2 className="text-3xl font-bold mb-8">Now Showing</h2>
+          <h2 className="text-3xl font-bold mb-8">Đang chiếu</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {nowShowingMovies.map((movie) => (
               <MovieCard key={movie.id} movie={movie} />
@@ -245,7 +245,7 @@ export default function HomePage() {
 
         {/* Coming Soon */}
         <section>
-          <h2 className="text-3xl font-bold mb-8">Coming Soon</h2>
+          <h2 className="text-3xl font-bold mb-8">Sắp chiếu</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {comingSoonMovies.map((movie) => (
               <MovieCard key={movie.id} movie={movie} isComingSoon />
@@ -261,61 +261,61 @@ export default function HomePage() {
             <div>
               <h3 className="text-xl font-bold mb-4">Galaxy Cinema</h3>
               <p className="text-gray-400">
-                Your premier destination for the latest movies and unforgettable cinema experiences.
+                Điểm đến hàng đầu cho những bộ phim mới nhất và trải nghiệm điện ảnh khó quên.
               </p>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Quick Links</h4>
+              <h4 className="font-semibold mb-4">Liên kết nhanh</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>
                   <Link href="/" className="hover:text-white">
-                    Home
+                    Trang chủ
                   </Link>
                 </li>
                 <li>
                   <Link href="/movies" className="hover:text-white">
-                    Movies
+                    Phim
                   </Link>
                 </li>
                 <li>
                   <Link href="/theaters" className="hover:text-white">
-                    Theaters
+                    Rạp chiếu
                   </Link>
                 </li>
                 <li>
                   <Link href="/bookings" className="hover:text-white">
-                    My Bookings
+                    Vé của tôi
                   </Link>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Support</h4>
+              <h4 className="font-semibold mb-4">Hỗ trợ</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>
                   <Link href="/help" className="hover:text-white">
-                    Help Center
+                    Trung tâm trợ giúp
                   </Link>
                 </li>
                 <li>
                   <Link href="/contact" className="hover:text-white">
-                    Contact Us
+                    Liên hệ
                   </Link>
                 </li>
                 <li>
                   <Link href="/terms" className="hover:text-white">
-                    Terms of Service
+                    Điều khoản dịch vụ
                   </Link>
                 </li>
                 <li>
                   <Link href="/privacy" className="hover:text-white">
-                    Privacy Policy
+                    Chính sách bảo mật
                   </Link>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Connect</h4>
+              <h4 className="font-semibold mb-4">Kết nối</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>
                   <Link href="#" className="hover:text-white">
@@ -341,7 +341,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Galaxy Cinema. All rights reserved.</p>
+            <p>&copy; 2024 Galaxy Cinema. Tất cả quyền được bảo lưu.</p>
           </div>
         </div>
       </footer>
